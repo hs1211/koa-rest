@@ -6,15 +6,20 @@ function home(ctx) {
 }
 
 function add(ctx) {
-//  console.log(ctx.request);
-//  console.log(ctx.request.body);
-  ctx.body = {text: ctx.req.body};
+  //console.log(ctx.request);
+  //console.log(ctx.request.body);
+  ctx.body = {text: ctx.request.body};
 
+}
+
+function addNum(a,b) {
+  return a+b+1;
 }
 
 module.exports={
   home: home,
-  add: add
+  add: add,
+  addNum: addNum
 }
 
 /*module.exports.home = function * home(next) {

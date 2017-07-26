@@ -20,10 +20,14 @@ describe('Routes', function() {
     it('should return 200', function(done) {
        const res=request()
                   .post('/add')
-                  .send(require("./mocking/book_add_request.json"))
+                  .send({
+                        title: "abc",
+                        author: "xxx",
+                        price: 123
+                      })
                   .expect('Content-Type', /json/)
                   .expect(200, done);
-          console.log(res);        
+         // console.log(res);        
     });
   });
 
@@ -34,4 +38,20 @@ describe('Routes', function() {
         .expect(404, done);
     });
   });
+
+
+  jest.unmock('../app/controllers/books');
+
+  describe('Test Mock', function() {
+
+      it('should return add result', function (done) {
+        const book=require('../app/controllers/books');
+        console.log(book.addNum);
+        expect(book.addNum(1,2)).toBe(3);
+        done();
+
+      });
+
+  });
+
 });
